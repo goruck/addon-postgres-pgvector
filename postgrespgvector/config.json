@@ -1,0 +1,28 @@
+{
+  "name": "PostgreSQL with pgvector",
+  "version": "0.1.0",
+  "slug": "postgrespgvector",
+  "description": "PostgreSQL 16 with pgvector, secure user setup, and encrypted backups.",
+  "startup": "services",
+  "boot": "auto",
+  "init": false,
+  "panel_icon": "mdi:database",
+  "ports": {
+    "5432/tcp": 5432
+  },
+  "host_network": false,
+  "privileged": ["SYS_ADMIN"],
+  "map": ["backup:rw", "share:rw", "config:rw", "ssl", "addons", "media"],
+  "options": {
+    "ha_user_password": "ChangeThisSecurePassword",
+    "auto_backup": true,
+    "backup_encrypt": false,
+    "gpg_recipient": ""
+  },
+  "schema": {
+    "ha_user_password": "str",
+    "auto_backup": "bool",
+    "backup_encrypt": "bool",
+    "gpg_recipient": "str"
+  }
+}
