@@ -29,7 +29,7 @@ Designed for use with custom integrations that need vector embedding storage, ma
 This add-on includes the following files:
 
 ```
-postgres_pgvector/
+postgres-pgvector/
 ├── Dockerfile           # Builds PostgreSQL 16 + pgvector
 ├── config.json          # HA add-on metadata and options
 ├── run.sh               # Startup logic and setup automation
