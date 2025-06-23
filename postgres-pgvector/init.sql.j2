@@ -1,0 +1,20 @@
+DO $$
+BEGIN
+    IF NOT EXISTS (
+        SELECT FROM pg_roles WHERE rolname = 'ha_user'
+    ) THEN
+        CREATE USER ha_user WITH PASSWORD '{{ ha_user_password }}';
+    END IF;
+
+    IF NOT EXISTS (
+        SELECT FROM pg_database WHERE datname = 'ha_db'
+    ) THEN
+        CREATE DATABASE ha_db WITH OWNER = ha_user ENCODING = 'UTF8';
+    END IF;
+END
+$$;
+
+\connect ha_db
+
+CREATE EXTENSION IF NOT EXISTS vector;
+GRANT ALL PRIVILEGES ON DATABASE ha_db TO ha_user;
