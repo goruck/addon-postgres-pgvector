@@ -1,8 +1,13 @@
 {
   "name": "PostgreSQL with pgvector",
   "version": "0.1.0",
-  "slug": "postgrespgvector",
-  "description": "PostgreSQL 16 with pgvector, secure user setup, and encrypted backups.",
+  "slug": "postgres_pgvector",
+  "description": "PostgreSQL 17 with pgvector, secure user setup, and encrypted backups.",
+  "arch": [
+    "amd64",
+    "aarch64",
+    "i386"
+  ],
   "startup": "services",
   "boot": "auto",
   "init": false,
@@ -11,8 +16,17 @@
     "5432/tcp": 5432
   },
   "host_network": false,
-  "privileged": ["SYS_ADMIN"],
-  "map": ["backup:rw", "share:rw", "config:rw", "ssl", "addons", "media"],
+  "privileged": [
+    "SYS_ADMIN"
+  ],
+  "map": [
+    "backup:rw",
+    "share:rw",
+    "homeassistant_config:rw",
+    "ssl",
+    "addons",
+    "media"
+  ],
   "options": {
     "ha_user_password": "ChangeThisSecurePassword",
     "auto_backup": true,

@@ -4,9 +4,9 @@ FROM $BUILD_FROM
 ENV LANG C.UTF-8
 
 RUN apk add --no-cache \
-    postgresql16 \
-    postgresql16-contrib \
-    postgresql16-dev \
+    postgresql17 \
+    postgresql17-contrib \
+    postgresql17-dev \
     build-base \
     gnupg \
     git

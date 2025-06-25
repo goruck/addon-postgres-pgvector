@@ -1,0 +1,9 @@
+DO $$
+BEGIN
+    IF NOT EXISTS (
+        SELECT FROM pg_roles WHERE rolname = 'ha_user'
+    ) THEN
+        CREATE USER ha_user WITH PASSWORD '{{ ha_user_password }}';
+    END IF;
+END
+$$;
