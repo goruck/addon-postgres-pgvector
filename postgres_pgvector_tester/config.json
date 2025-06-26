@@ -1,0 +1,17 @@
+{
+    "name": "postgres_pgvector test",
+    "version": "0.1.0",
+    "slug": "postgres_pgvector_tester",
+    "description": "postgres_pgvector integration test",
+    "startup": "application",
+    "boot": "manual",
+    "init": false,
+    "hassio_api": false,
+    "hassio_role": "default",
+    "host_network": true,
+    "arch": [
+        "amd64",
+        "aarch64",
+        "i386"
+    ]
+}
