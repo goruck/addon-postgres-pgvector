@@ -12,10 +12,10 @@
   "boot": "auto",
   "init": false,
   "panel_icon": "mdi:database",
+  "host_network": true,
   "ports": {
     "5432/tcp": 5432
   },
-  "host_network": false,
   "privileged": [
     "SYS_ADMIN"
   ],
