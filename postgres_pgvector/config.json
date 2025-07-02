@@ -38,5 +38,6 @@
     "auto_backup": "bool",
     "backup_encrypt": "bool",
     "gpg_recipient": "str"
-  }
+  },
+  "image": "ghcr.io/home-assistant/{arch}-addon-example"
 }
