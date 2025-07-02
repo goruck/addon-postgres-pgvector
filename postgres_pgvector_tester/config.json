@@ -14,5 +14,5 @@
       "aarch64",
       "i386"
   ],
-  "image": "ghcr.io/home-assistant/{arch}-addon-example"
+  "image": "ghcr.io/goruck/{arch}-addon-postgres-pgvector-tester"
 }

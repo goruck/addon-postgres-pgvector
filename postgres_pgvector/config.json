@@ -39,5 +39,5 @@
     "backup_encrypt": "bool",
     "gpg_recipient": "str"
   },
-  "image": "ghcr.io/home-assistant/{arch}-addon-example"
+  "image": "ghcr.io/goruck/{arch}-postgres-pgvector"
 }
