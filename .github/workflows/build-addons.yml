@@ -74,9 +74,10 @@ jobs:
           context: ./${{ matrix.addon }}
           file: ./${{ matrix.addon }}/Dockerfile
           platforms: linux/amd64,linux/arm64
+          pull: true
           push: ${{ env.DRY_RUN == 'false' }}
           tags: |
             ghcr.io/${{ github.repository_owner }}/${{ matrix.addon }}:latest
             ghcr.io/${{ github.repository_owner }}/${{ matrix.addon }}:${{ github.sha }}
           build-args: |
-            BUILD_FROM=alpine:latest
+            BUILD_FROM=alpine@sha256:e5d0aea7f7d2954678a9a6269ca2d06e06591881161961ea59e974dff3f12377
