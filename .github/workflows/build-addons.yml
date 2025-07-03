@@ -43,6 +43,7 @@ jobs:
           driver: docker-container
           install: true
           buildkitd-flags: --debug
+          platforms: linux/amd64,linux/arm64
 
       - name: Check for "image" in config.json
         id: config_check
@@ -73,6 +74,7 @@ jobs:
         if: steps.config_check.outputs.skip == 'false'
         uses: docker/build-push-action@v4
         with:
+          builder: ${{ steps.buildx.outputs.name }}
           context: ./${{ matrix.addon }}
           file: ./${{ matrix.addon }}/Dockerfile
           platforms: linux/amd64,linux/arm64
