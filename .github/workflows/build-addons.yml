@@ -39,11 +39,10 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
         with:
+          use: true
           driver: docker-container
           install: true
           buildkitd-flags: --debug
-          name: mybuilder
-          use: true
 
       - name: Check for "image" in config.json
         id: config_check
@@ -74,7 +73,6 @@ jobs:
         if: steps.config_check.outputs.skip == 'false'
         uses: docker/build-push-action@v4
         with:
-          builder: mybuilder
           context: ./${{ matrix.addon }}
           file: ./${{ matrix.addon }}/Dockerfile
           platforms: linux/amd64,linux/arm64
