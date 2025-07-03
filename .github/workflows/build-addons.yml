@@ -21,7 +21,7 @@ jobs:
       packages: write
     strategy:
       matrix:
-        addon: [postgres_pgvector, pgvector_tester]
+        addon: [postgres_pgvector, postgres_pgvector_tester]
 
     env:
       DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
