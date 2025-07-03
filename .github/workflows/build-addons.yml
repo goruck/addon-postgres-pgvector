@@ -36,14 +36,10 @@ jobs:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-        with:
-          install: true
-
-      - name: Create custom builder
+      - name: Set up and use custom Buildx builder
         run: |
-          docker buildx create --use --name custom-builder --driver docker-container --buildkitd-flags '--debug' --platform linux/amd64,linux/arm64
+          docker buildx create --use --name custom-builder --driver docker-container --platform linux/amd64,linux/arm64 --buildkitd-flags '--debug'
+          docker buildx inspect --bootstrap
 
       - name: Check for "image" in config.json
         id: config_check
