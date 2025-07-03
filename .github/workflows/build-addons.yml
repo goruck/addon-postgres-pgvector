@@ -39,10 +39,10 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
-      - name: Debug: list Buildx builders
+      - name: Debug list Buildx builders
         run: |
           docker buildx ls
-      - name: Debug: inspect the default builder
+      - name: Debug inspect the default builder
         run: |
           docker buildx inspect default --bootstrap
 
