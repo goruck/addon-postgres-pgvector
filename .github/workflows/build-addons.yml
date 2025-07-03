@@ -43,6 +43,7 @@ jobs:
           install: true
           buildkitd-flags: --debug
           name: mybuilder
+          use: true
 
       - name: Check for "image" in config.json
         id: config_check
