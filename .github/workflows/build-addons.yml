@@ -38,6 +38,9 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
+        with:
+          driver: docker-container
+          install: true
 
       - name: Debug list Buildx builders
         run: |
