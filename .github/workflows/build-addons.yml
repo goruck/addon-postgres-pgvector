@@ -41,13 +41,8 @@ jobs:
         with:
           driver: docker-container
           install: true
-
-      - name: Debug list Buildx builders
-        run: |
-          docker buildx ls
-      - name: Debug inspect the default builder
-        run: |
-          docker buildx inspect default --bootstrap
+          buildkitd-flags: --debug
+          name: mybuilder
 
       - name: Check for "image" in config.json
         id: config_check
@@ -75,7 +70,7 @@ jobs:
         if: steps.config_check.outputs.skip == 'false'
         uses: docker/build-push-action@v4
         with:
-          builder: default
+          builder: mybuilder
           context: ./${{ matrix.addon }}
           file: ./${{ matrix.addon }}/Dockerfile
           platforms: linux/amd64,linux/arm64
