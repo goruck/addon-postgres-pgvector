@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - "addon-postgres-pgvector/**/**"
+      - ".github/workflows/build-addons.yml"
   workflow_dispatch:
     inputs:
       dry_run:
@@ -35,6 +36,11 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
+
+      - name: Create and use multi-platform builder
+        run: |
+          docker buildx create --use --name multi-builder
+          docker buildx inspect --bootstrap
 
       - name: Debug - Show files
         run: |

@@ -5,8 +5,7 @@
   "description": "PostgreSQL 17 with pgvector, secure user setup, and encrypted backups.",
   "arch": [
     "amd64",
-    "aarch64",
-    "i386"
+    "aarch64"
   ],
   "startup": "services",
   "boot": "auto",

@@ -1,7 +1,7 @@
-ARG BUILD_FROM
+ARG BUILD_FROM=alpine:latest
 FROM $BUILD_FROM
 
-ENV LANG C.UTF-8
+ENV LANG=C.UTF-8
 
 RUN apk add --no-cache \
     postgresql17 \

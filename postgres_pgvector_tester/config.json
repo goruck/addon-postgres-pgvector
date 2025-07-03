@@ -11,8 +11,7 @@
   "host_network": true,
   "arch": [
       "amd64",
-      "aarch64",
-      "i386"
+      "aarch64"
   ],
   "image": "ghcr.io/goruck/{arch}-addon-postgres-pgvector-tester"
 }
