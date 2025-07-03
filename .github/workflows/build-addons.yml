@@ -80,4 +80,4 @@ jobs:
             ghcr.io/${{ github.repository_owner }}/${{ matrix.addon }}:latest
             ghcr.io/${{ github.repository_owner }}/${{ matrix.addon }}:${{ github.sha }}
           build-args: |
-            BUILD_FROM=alpine@sha256:e5d0aea7f7d2954678a9a6269ca2d06e06591881161961ea59e974dff3f12377
+            BUILD_FROM=alpine@sha256:08001109a7d679fe33b04fa51d681bd40b975d8f5cea8c3ef6c0eccb6a7338ce
