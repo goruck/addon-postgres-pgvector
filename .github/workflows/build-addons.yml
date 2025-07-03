@@ -67,6 +67,9 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Debug List Buildx builders
+        run: docker buildx ls
+
       - name: Build & push "${{ matrix.addon }}"
         if: steps.config_check.outputs.skip == 'false'
         uses: docker/build-push-action@v4
