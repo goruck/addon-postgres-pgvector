@@ -26,8 +26,7 @@ jobs:
 
     env:
       DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
-      DOCKER_BUILDKIT: 1
-      BUILDKIT_PROGRESS: plain
+      BUILDX_NO_DEFAULT_ATTESTATIONS: 1 # remove unknown/unknown image in Github UI
 
     steps:
       - name: Checkout repo
@@ -74,10 +73,9 @@ jobs:
           context: ./${{ matrix.addon }}
           file: ./${{ matrix.addon }}/Dockerfile
           platforms: linux/amd64,linux/arm64
-          pull: true
           push: ${{ env.DRY_RUN == 'false' }}
           tags: |
             ghcr.io/${{ github.repository_owner }}/${{ matrix.addon }}:latest
             ghcr.io/${{ github.repository_owner }}/${{ matrix.addon }}:${{ github.sha }}
           build-args: |
-            BUILD_FROM=alpine@sha256:08001109a7d679fe33b04fa51d681bd40b975d8f5cea8c3ef6c0eccb6a7338ce
+            BUILD_FROM=alpine:latest
