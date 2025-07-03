@@ -39,13 +39,13 @@ jobs:
       - name: Debug - Show files
         run: |
           pwd
-          ls -l addon-postgres-pgvector/${{ matrix.addon }}
+          ls -l ${{ matrix.addon }}
 
       - name: Check for "image" in config.json
         id: config_check
         run: |
-          echo "Checking addon-postgres-pgvector/${{ matrix.addon }}/config.json for an 'image' field..."
-          if jq -e '.image' addon-postgres-pgvector/${{ matrix.addon }}/config.json >/dev/null 2>&1; then
+          echo "${{ matrix.addon }}/config.json for an 'image' field..."
+          if jq -e '.image' ${{ matrix.addon }}/config.json >/dev/null 2>&1; then
             echo "skip=false" >> $GITHUB_OUTPUT
           else
             echo "skip=true" >> $GITHUB_OUTPUT
@@ -53,7 +53,7 @@ jobs:
 
       - name: Skip notice
         if: steps.config_check.outputs.skip == 'true'
-        run: echo "⚠️ addon-postgres-pgvector/${{ matrix.addon }} has no 'image' property; skipping build."
+        run: echo "⚠️ ${{ matrix.addon }} has no 'image' property; skipping build."
 
       - name: Log in to GHCR
         if: env.DRY_RUN == 'false' && steps.config_check.outputs.skip == 'false'
@@ -67,8 +67,8 @@ jobs:
         if: steps.config_check.outputs.skip == 'false'
         uses: docker/build-push-action@v4
         with:
-          context: ./addon-postgres-pgvector/${{ matrix.addon }}
-          file: ./addon-postgres-pgvector/${{ matrix.addon }}/Dockerfile
+          context: ./${{ matrix.addon }}
+          file: ./${{ matrix.addon }}/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: ${{ env.DRY_RUN == 'false' }}
           tags: |
