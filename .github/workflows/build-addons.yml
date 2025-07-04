@@ -1,4 +1,4 @@
-# .github/workflows/build-addons.yml
+# File: .github/workflows/build-addons.yml
 name: Build & Publish HAOS Add-ons
 
 on:
@@ -22,7 +22,19 @@ jobs:
       packages: write
     strategy:
       matrix:
-        addon: [postgres_pgvector, postgres_pgvector_tester]
+        include:
+          - addon: postgres_pgvector
+            platform: linux/amd64
+            arch: amd64
+          - addon: postgres_pgvector
+            platform: linux/arm64
+            arch: arm64
+          - addon: postgres_pgvector_tester
+            platform: linux/amd64
+            arch: amd64
+          - addon: postgres_pgvector_tester
+            platform: linux/arm64
+            arch: arm64
 
     env:
       DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
@@ -62,20 +74,17 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Debug List Buildx builders
-        run: docker buildx ls
-
-      - name: Build & push "${{ matrix.addon }}"
+      - name: Build & push "${{ matrix.arch }}-${{ matrix.addon }}"
         if: steps.config_check.outputs.skip == 'false'
         uses: docker/build-push-action@v4
         with:
           builder: custom-builder
           context: ./${{ matrix.addon }}
           file: ./${{ matrix.addon }}/Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: ${{ matrix.platform }}
           push: ${{ env.DRY_RUN == 'false' }}
           tags: |
-            ghcr.io/${{ github.repository_owner }}/${{ matrix.addon }}:latest
-            ghcr.io/${{ github.repository_owner }}/${{ matrix.addon }}:${{ github.sha }}
+            ghcr.io/${{ github.repository_owner }}/${{ matrix.arch }}-${{ matrix.addon }}:latest
+            ghcr.io/${{ github.repository_owner }}/${{ matrix.arch }}-${{ matrix.addon }}:${{ github.sha }}
           build-args: |
             BUILD_FROM=alpine:latest
