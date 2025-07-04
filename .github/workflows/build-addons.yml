@@ -74,6 +74,11 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Get addon version
+        id: get_version
+        run: |
+          echo "VERSION=$(jq -r .version ${{ matrix.addon }}/config.json)" >> $GITHUB_ENV
+
       - name: Build & push "${{ matrix.arch }}-${{ matrix.addon }}"
         if: steps.config_check.outputs.skip == 'false'
         uses: docker/build-push-action@v4
@@ -86,6 +91,6 @@ jobs:
           tags: |
             ghcr.io/${{ github.repository_owner }}/${{ matrix.arch }}-${{ matrix.addon }}:latest
             ghcr.io/${{ github.repository_owner }}/${{ matrix.arch }}-${{ matrix.addon }}:${{ github.sha }}
-            ghcr.io/${{ github.repository_owner }}/${{ matrix.arch }}-${{ matrix.addon }}:${{ fromJson(file(matrix.addon + "/config.json")).version }}
+            ghcr.io/${{ github.repository_owner }}/${{ matrix.arch }}-${{ matrix.addon }}:${{ env.VERSION }}
           build-args: |
             BUILD_FROM=alpine:latest
