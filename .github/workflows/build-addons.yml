@@ -78,7 +78,7 @@ jobs:
         id: get_version
         run: |
           VER=$(jq -r .version ${{ matrix.addon }}/config.json)
-          echo "::set-output name=version::$VER"
+          echo "version=$VER" >> $GITHUB_OUTPUT
 
       - name: Build & push "${{ matrix.arch }}-${{ matrix.addon }}"
         if: steps.config_check.outputs.skip == 'false'
