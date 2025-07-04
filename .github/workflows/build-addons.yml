@@ -86,5 +86,6 @@ jobs:
           tags: |
             ghcr.io/${{ github.repository_owner }}/${{ matrix.arch }}-${{ matrix.addon }}:latest
             ghcr.io/${{ github.repository_owner }}/${{ matrix.arch }}-${{ matrix.addon }}:${{ github.sha }}
+            ghcr.io/${{ github.repository_owner }}/${{ matrix.arch }}-${{ matrix.addon }}:${{ fromJson(file(matrix.addon + "/config.json")).version }}
           build-args: |
             BUILD_FROM=alpine:latest
