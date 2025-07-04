@@ -90,6 +90,6 @@ jobs:
           platforms: ${{ matrix.platform }}
           push: ${{ env.DRY_RUN == 'false' }}
           tags: |
-            ghcr.io/${{ github.repository_owner }}/${{ matrix.arch }}-${{ matrix.addon }}:${{ steps.get_version.outputs.version }}
+            ghcr.io/${{ github.repository_owner }}/${{ matrix.arch }}_${{ matrix.addon }}:${{ steps.get_version.outputs.version }}
           build-args: |
             BUILD_FROM=alpine:latest
