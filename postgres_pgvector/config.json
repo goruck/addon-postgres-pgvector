@@ -38,5 +38,5 @@
     "backup_encrypt": "bool",
     "gpg_recipient": "str"
   },
-  "image": "ghcr.io/goruck/{arch}-postgres-pgvector"
+  "image": "ghcr.io/goruck/{arch}_postgres_pgvector"
 }
