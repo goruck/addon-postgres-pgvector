@@ -27,14 +27,14 @@ jobs:
             platform: linux/amd64
             arch: amd64
           - addon: postgres_pgvector
-            platform: linux/arm64
-            arch: arm64
+            platform: linux/aarch64
+            arch: aarch64
           - addon: postgres_pgvector_tester
             platform: linux/amd64
             arch: amd64
           - addon: postgres_pgvector_tester
-            platform: linux/arm64
-            arch: arm64
+            platform: linux/aarch64
+            arch: aarch64
 
     env:
       DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
@@ -49,7 +49,7 @@ jobs:
 
       - name: Set up and use custom Buildx builder
         run: |
-          docker buildx create --use --name custom-builder --driver docker-container --platform linux/amd64,linux/arm64 --buildkitd-flags '--debug'
+          docker buildx create --use --name custom-builder --driver docker-container --platform linux/amd64,linux/aarch64 --buildkitd-flags '--debug'
           docker buildx inspect --bootstrap
 
       - name: Log in to GHCR
