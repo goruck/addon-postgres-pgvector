@@ -12,6 +12,5 @@
   "arch": [
       "amd64",
       "aarch64"
-  ],
-  "image": "ghcr.io/goruck/{arch}_postgres_pgvector_tester"
+  ]
 }
