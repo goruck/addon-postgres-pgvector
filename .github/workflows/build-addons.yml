@@ -49,7 +49,7 @@ jobs:
 
       - name: Set up and use custom Buildx builder
         run: |
-          docker buildx create --use --name custom-builder --driver docker-container --platform linux/amd64,linux/aarch64 --buildkitd-flags '--debug'
+          docker buildx create --use --name custom-builder --driver docker-container --buildkitd-flags '--debug'
           docker buildx inspect --bootstrap
 
       - name: Log in to GHCR
