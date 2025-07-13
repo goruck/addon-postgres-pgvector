@@ -20,3 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - v0.1.0 Initial version.
+
+## Fixed
+
+- Compile pgvector for portability.
