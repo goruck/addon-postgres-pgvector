@@ -42,14 +42,12 @@ postgres_pgvector/
 The installation of this add-on is pretty straightforward and not different in
 comparison to installing any other Home Assistant add-on.
 
-1. Click the Home Assistant My button below to open the add-on on your Home
-   Assistant instance.
+1. Click the Home Assistant My button below to add the reposistory to your Assistant instance.
 
-   [![Open your Home Assistant instance and show the dashboard of an add-on.](https://my.home-assistant.io/badges/supervisor_addon.svg)](https://my.home-assistant.io/redirect/supervisor_addon/?addon=postgres_pgvector&repository_url=https%3A%2F%2Fgithub.com%2Fgoruck%2Faddon-postgres-pgvector)
+   [![Open your Home Assistant instance and show the add add-on repository dialog with a specific repository URL pre-filled.](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fgoruck%2Faddon-postgres-pgvector)
 
-2. Click the "Install" button to install the add-on.
-3. Start the **PostgreSQL with pgvector** add-on
-4. Check the logs of **PostgreSQL with pgvector** add-on to see if everything went well.
+2. Refresh the add-on store to see the add-on and select it.
+3. Click the "Install" button to install the add-on.
 
 ## ⚙️ Configuration Options
 
@@ -62,7 +60,7 @@ backup_encrypt: true # Optional
 gpg_recipient: "you@example.com" # Required if encryption is on
 ```
 
-> ❗ **Important**: Make sure to restart the add-on after changing the password.
+> ❗ **Important**: Make sure to start/restart the add-on after changing the password.
 
 ---
 
