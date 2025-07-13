@@ -13,7 +13,7 @@ RUN apk add --no-cache \
 
 RUN git clone --branch v0.7.0 https://github.com/pgvector/pgvector.git && \
     cd pgvector && \
-    make && make install && \
+    make OPTFLAGS="" && make install && \
     cd .. && rm -rf pgvector
 
 COPY run.sh /run.sh
