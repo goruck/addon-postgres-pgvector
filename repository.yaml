@@ -1,4 +1,4 @@
 # https://developers.home-assistant.io/docs/add-ons/repository#repository-configuration
-name: PostgreSQL with pgvector
+name: addon-postgres-pgvector
 url: "https://github.com/goruck/addon-postgres-pgvector"
 maintainer: goruck <lindo.st.angel@gmail.com>
