@@ -1,8 +1,9 @@
 {
-  "name": "postgres_pgvector test",
+  "name": "PostgreSQL with pgvector integration test",
   "version": "0.1.0",
   "slug": "postgres_pgvector_tester",
-  "description": "postgres_pgvector integration test",
+  "description": "PostgreSQL with pgvector integration test",
+  "url": "https://github.com/goruck/addon-postgres-pgvector/tree/main/postgres_pgvector_tester",
   "startup": "application",
   "boot": "manual",
   "init": false,

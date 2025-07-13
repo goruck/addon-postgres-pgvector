@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "slug": "postgres_pgvector",
   "description": "PostgreSQL 17 with pgvector, secure user setup, and encrypted backups.",
+  "url": "https://github.com/goruck/addon-postgres-pgvector/tree/main/postgres_pgvector",
   "arch": [
     "amd64",
     "aarch64"
